@@ -38,7 +38,7 @@ module DiscourseCodeReview
       end
 
       Rails.logger.warn("repo_name is blank. #{params.to_json}") if repo_name.blank?
-      File.write('/home/abid/Disc/discourse/plugins/discourse-code-review/data.json', params.to_json)      
+      File.write('/home/abid/Disc/discourse/plugins/discourse-code-review/data.json', params.to_json)
       if type == "issue_comment" && params[:issue]["pull_request"].present?
         type = "pull_request_comment"
       end
