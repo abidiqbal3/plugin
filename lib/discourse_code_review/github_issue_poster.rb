@@ -10,15 +10,15 @@ module DiscourseCodeReview
       end
     def post_event(event)
       case event.class.tag
-        when :closed
+      when :closed
           update_closed(true)
-        when :issue_comment
+      when :issue_comment
           ensure_issue_post(
             body: event.body,
             number: event.number,
             post_type: :regular
           )
-        when :renamed_title
+      when :renamed_title
           body =
             "The title of this issue changed from \"#{event.previous_title}\" to \"#{event.new_title}"
           ensure_issue_post(body: body, post_type: :small_action, action_code: 'renamed') do |post|
@@ -27,7 +27,7 @@ module DiscourseCodeReview
             topic.title = "#{event.new_title} (Issue ##{issue_number})"
             topic.save!(validate: false)
           end
-        when :reopened
+      when :reopened
           update_closed(false)
         end
       end
