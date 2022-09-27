@@ -3,10 +3,10 @@
 module DiscourseCodeReview
   class GithubIssuePoster
     def initialize(topic:, author:, github_id:, created_at:)
-        @topic = topic
-        @author = author
-        @github_id = github_id
-        @created_at = created_at
+      @topic = topic
+      @author = author
+      @github_id = github_id
+      @created_at = created_at
       end
     def post_event(event)
         case event.class.tag
@@ -31,11 +31,11 @@ module DiscourseCodeReview
           update_closed(false)
         end
       end
-  private
-  attr_reader :topic
-  attr_reader :author
-  attr_reader :github_id
-  attr_reader :created_at
+      private
+      attr_reader :topic
+      attr_reader :author
+      attr_reader :github_id
+      attr_reader :created_at
     def update_closed(closed)
         State::Helpers.ensure_closed_state_with_nonce(
           closed: closed,
@@ -63,6 +63,6 @@ module DiscourseCodeReview
             user: author,
           )
         yield post if block_given?
-      end
+    end
   end
 end
