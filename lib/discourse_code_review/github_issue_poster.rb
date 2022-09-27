@@ -2,13 +2,13 @@
 
 module DiscourseCodeReview
   class GithubIssuePoster
-      def initialize(topic:, author:, github_id:, created_at:)
+    def initialize(topic:, author:, github_id:, created_at:)
         @topic = topic
         @author = author
         @github_id = github_id
         @created_at = created_at
       end
-      def post_event(event)
+    def post_event(event)
         case event.class.tag
         when :closed
           update_closed(true)
@@ -31,13 +31,12 @@ module DiscourseCodeReview
           update_closed(false)
         end
       end
-  
-      private
+    private
       attr_reader :topic
       attr_reader :author
       attr_reader :github_id
       attr_reader :created_at
-      def update_closed(closed)
+    def update_closed(closed)
         State::Helpers.ensure_closed_state_with_nonce(
           closed: closed,
           created_at: created_at,
@@ -47,8 +46,7 @@ module DiscourseCodeReview
           user: author,
         )
       end
-  
-      def ensure_issue_post(post_type:, body: nil, number: nil, action_code: nil, author: @author)
+    def ensure_issue_post(post_type:, body: nil, number: nil, action_code: nil, author: @author)
         custom_fields = {}
         custom_fields[DiscourseCodeReview::GithubIssueSyncer::GITHUB_COMMENT_NUMBER] = number
         post =
@@ -64,8 +62,7 @@ module DiscourseCodeReview
             topic_id: topic.id,
             user: author,
           )
-  
         yield post if block_given?
       end
-    end
+  end
 end
