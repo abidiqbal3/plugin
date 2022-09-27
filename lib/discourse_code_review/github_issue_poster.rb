@@ -32,10 +32,10 @@ module DiscourseCodeReview
         end
       end
     private
-      attr_reader :topic
-      attr_reader :author
-      attr_reader :github_id
-      attr_reader :created_at
+    attr_reader :topic
+    attr_reader :author
+    attr_reader :github_id
+    attr_reader :created_at
     def update_closed(closed)
         State::Helpers.ensure_closed_state_with_nonce(
           closed: closed,
