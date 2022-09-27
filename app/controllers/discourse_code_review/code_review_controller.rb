@@ -75,7 +75,6 @@ module DiscourseCodeReview
           syncer.sync_pull_request(repo_name, issue_number, repo_id: repo_id)
         end
       end
-      
       if SiteSetting.code_review_issues_enabled
         if ["issues", "issue_comment"].include?(type)
           syncer = DiscourseCodeReview.github_issue_syncer
@@ -84,7 +83,6 @@ module DiscourseCodeReview
           syncer.sync_issue(repo_name, issue_number, repo_id: repo_id)
         end
       end
-
 
       render plain: '"ok"'
     end
@@ -232,4 +230,5 @@ module DiscourseCodeReview
     end
 
   end
+  
 end
