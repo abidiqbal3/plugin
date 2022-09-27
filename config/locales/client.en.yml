@@ -1,0 +1,42 @@
+en:
+  js:
+    action_codes:
+      approved: "Approved"
+      followup: "Follow Up"
+      followed_up: "Followed Up"
+      merged: "Merged"
+      renamed: "Renamed"
+      pr_merge_info: "PR Merge Info"
+    notifications:
+      code_review:
+        commit_approved:
+          single: '"%{topicTitle}" approved'
+          multiple:
+            one: "%{count} commit was approved"
+            other: "%{count} commits were approved"
+          title: "commit approved"
+    code_review:
+      title: "Code Review"
+      approve:
+        title: "Approve commit"
+        label: "Approve"
+      followup:
+        title: "Follow up commit"
+        label: "Follow Up"
+      followed_up:
+        title: "Followed up commit"
+        label: "Followed Up"
+      skip:
+        title: "Skip commit"
+        label: "Skip"
+      approval_given: "Approval Given"
+      approval_given_empty_state_title: "You don't have approved commits yet"
+      approval_pending: "Approval Pending"
+      approval_pending_empty_state_title: "You don't have commits waiting for approval"
+      github_webhooks: "Github Webhooks"
+      no_organizations_configured: "You need to configure at least one organization with the <code>code review github organizations</code> site setting before webhooks can be configured."
+      webhooks_load_error: "There was an error loading webhook data, webhooks cannot be configured until this is resolved."
+      configure_webhooks: "Configure Webhooks"
+      configure_webhook: "Configure Webhook"
+      notify_on_approval: "Notify on code review approvals"
+      configure_webhooks_warning: "Clicking 'Configure Webhooks' will use the GitHub API to create webhooks for <strong>every repository in every organization you have configured</strong>. The <code>push</code>, <code>commit_comment</code>, <code>issue_comment</code>, <code>pull_request</code>, <code>pull_request_review</code>, and <code>pull_request_comment</code> event triggers will be created. Please note you must also have the <code>code review github webhook secret</code> site setting configured for this to work. See the <a href=\"https://docs.github.com/en/developers/webhooks-and-events/webhooks/about-webhooks\">GitHub webhook documentation</a> for more information."

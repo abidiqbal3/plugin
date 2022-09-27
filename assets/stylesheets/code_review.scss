@@ -1,0 +1,46 @@
+.code-review-webhook-repo,
+.code-review-webhook-configured,
+.code-review-webhook-not-configured {
+  margin-left: 2em;
+}
+
+thead,
+tbody {
+  &.code-review {
+    .topic-list-item {
+      .link-bottom-line {
+        align-items: baseline;
+
+        .committer {
+          color: var(--primary-high);
+          font-size: $font-down-1;
+          font-weight: bold;
+          margin-right: 12px;
+        }
+
+        .commit-state {
+          font-size: $font-down-1;
+          margin-left: 12px;
+        }
+
+        .approved {
+          color: var(--success);
+        }
+
+        .followup {
+          color: var(--danger);
+        }
+
+        .pending {
+          color: #dbab09;
+        }
+      }
+    }
+  }
+}
+
+.code-review-webhook-tree {
+  h2 {
+    margin-top: 1rem;
+  }
+}

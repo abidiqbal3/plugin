@@ -1,0 +1,49 @@
+# WARNING: Never edit this file.
+# It will be overwritten when translations are pulled from Crowdin.
+#
+# To work with us on translations, join this project:
+# https://translate.discourse.org/
+
+he:
+  js:
+    action_codes:
+      approved: "אושר"
+      followup: "לעקוב"
+      followed_up: "במעקב"
+      merged: "מוזג"
+      renamed: "השם השתנה"
+      pr_merge_info: "פרטי מיזוג בקשת הדחיפה"
+    notifications:
+      code_review:
+        commit_approved:
+          single: '„%{topicTitle}” קיבל אישור'
+          multiple:
+            one: "הגשה %{count} קיבלה אישור"
+            two: "%{count} הגשות קיבלו אישור"
+            many: "%{count} הגשות קיבלו אישור"
+            other: "%{count} הגשות קיבלו אישור"
+          title: "ההגשה אושרה"
+    code_review:
+      title: "סקירת קוד"
+      approve:
+        title: "אישור הגשה"
+        label: "אישור"
+      followup:
+        title: "מעקב אחר הגשה"
+        label: "מעקב"
+      followed_up:
+        title: "הגשה במעקב"
+        label: "במעקב"
+      skip:
+        title: "דילוג על הגשה"
+        label: "דילוג"
+      approval_given: "ניתן אישור"
+      approval_given_empty_state_title: "אין לך הגשות מאושרות עדיין"
+      approval_pending: "אישור ממתין"
+      approval_pending_empty_state_title: "אין לך הגשות שמחכות לאישור"
+      github_webhooks: "התליות מקוונות של GitHub"
+      no_organizations_configured: "עליך להגדיר לפחות ארגון אחד עם הגדרת האתר <code>סקירת קוד בארגוני GitHub</code> בטרם יתאפשר לך להגדיר התליות."
+      webhooks_load_error: "אירעה שגיאה בטעינת נתוני ההתלייה, לא ניתן להגדיר התליות עד לפתרון התקלה."
+      configure_webhooks: "הגדרת התליות רשת"
+      configure_webhook: "הגדרת התליית רשת"
+      notify_on_approval: "להודיע על אישורי סקירת קוד"

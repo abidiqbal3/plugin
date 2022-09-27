@@ -1,0 +1,43 @@
+plugins:
+  code_review_enabled: true
+  code_review_github_token: ""
+  code_review_sync_to_github: true
+  code_review_commits_and_prs_enabled: true
+  code_review_issues_enabled: true
+  code_review_catch_up_commits: 10
+  code_review_allow_private_clone: false
+  code_review_allow_manual_followup:
+    client: true
+    default: true
+  code_review_pending_tag:
+    client: true
+    default: "pending"
+  code_review_approved_tag:
+    client: true
+    default: "approved"
+  code_review_followup_tag:
+    client: true
+    default: "follow-up"
+  code_review_unmerged_tag: "unmerged"
+  code_review_commit_tag: "commit"
+  code_review_pull_request_tag: "pull-request"
+  code_review_issue_tag: "issue"
+  code_review_github_webhook_secret:
+    default: ""
+    secret: true
+  code_review_allow_self_approval:
+    client: true
+    default: false
+  code_review_skip_duration_minutes: 2880
+  code_review_auto_assign_on_followup: true
+  code_review_auto_unassign_on_approve: true
+  code_review_auto_approve_followed_up_commits: true
+  code_review_github_organizations: ""
+  code_review_approve_approved_prs: false
+  code_review_default_mute_new_categories: false
+  code_review_default_parent_category:
+    type: category
+    default: ""
+  code_review_theme:
+    client: true
+    default: false
