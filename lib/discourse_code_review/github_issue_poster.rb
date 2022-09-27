@@ -1,14 +1,13 @@
 # frozen_string_literal: true
 
 module DiscourseCodeReview
-    class GithubIssuePoster
+  class GithubIssuePoster
       def initialize(topic:, author:, github_id:, created_at:)
         @topic = topic
         @author = author
         @github_id = github_id
         @created_at = created_at
       end
-  
       def post_event(event)
         case event.class.tag
         when :closed
@@ -22,11 +21,9 @@ module DiscourseCodeReview
         when :renamed_title
           body =
             "The title of this issue changed from \"#{event.previous_title}\" to \"#{event.new_title}"
-  
           ensure_issue_post(body: body, post_type: :small_action, action_code: 'renamed') do |post|
             topic = post.topic
             issue_number = topic.custom_fields[DiscourseCodeReview::GithubIssueSyncer::GITHUB_ISSUE_NUMBER]
-  
             topic.title = "#{event.new_title} (Issue ##{issue_number})"
             topic.save!(validate: false)
           end
@@ -36,12 +33,10 @@ module DiscourseCodeReview
       end
   
       private
-  
       attr_reader :topic
       attr_reader :author
       attr_reader :github_id
       attr_reader :created_at
-  
       def update_closed(closed)
         State::Helpers.ensure_closed_state_with_nonce(
           closed: closed,
@@ -56,7 +51,6 @@ module DiscourseCodeReview
       def ensure_issue_post(post_type:, body: nil, number: nil, action_code: nil, author: @author)
         custom_fields = {}
         custom_fields[DiscourseCodeReview::GithubIssueSyncer::GITHUB_COMMENT_NUMBER] = number
-  
         post =
           State::Helpers.ensure_post_with_nonce(
             action_code: action_code,
@@ -74,4 +68,4 @@ module DiscourseCodeReview
         yield post if block_given?
       end
     end
-  end
+end

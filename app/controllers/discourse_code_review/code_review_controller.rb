@@ -230,5 +230,4 @@ module DiscourseCodeReview
     end
 
   end
-  
 end
