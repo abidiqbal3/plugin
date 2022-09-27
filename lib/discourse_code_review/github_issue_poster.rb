@@ -29,7 +29,7 @@ module DiscourseCodeReview
           end
       when :reopened
         update_closed(false)
-        end
+      end
     end
     private
     attr_reader :topic
@@ -37,7 +37,7 @@ module DiscourseCodeReview
     attr_reader :github_id
     attr_reader :created_at
     def update_closed(closed)
-        State::Helpers.ensure_closed_state_with_nonce(
+      State::Helpers.ensure_closed_state_with_nonce(
           closed: closed,
           created_at: created_at,
           nonce_name: DiscourseCodeReview::GithubIssueSyncer::GITHUB_NODE_ID,
@@ -47,7 +47,7 @@ module DiscourseCodeReview
         )
       end
     def ensure_issue_post(post_type:, body: nil, number: nil, action_code: nil, author: @author)
-        custom_fields = {}
+      custom_fields = {}
         custom_fields[DiscourseCodeReview::GithubIssueSyncer::GITHUB_COMMENT_NUMBER] = number
         post =
           State::Helpers.ensure_post_with_nonce(
