@@ -2,7 +2,7 @@
 
 module DiscourseCodeReview
   class Hooks
-      class << self
+    class << self
         def add_parent_category_finder(key, &blk)
           @finders ||= {}
           @finders[key] = blk
@@ -38,6 +38,6 @@ module DiscourseCodeReview
             end
           end
         end
-      end
     end
+  end
 end
