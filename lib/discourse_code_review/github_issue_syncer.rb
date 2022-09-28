@@ -38,7 +38,7 @@ module DiscourseCodeReview
             issue_number: issue_number
           )
       issue_service.issue_events(issue).each do |event_info, event|
-          poster =
+        poster =
             GithubIssuePoster.new(
               topic: topic,
               author: ensure_actor(event_info.actor),
@@ -51,8 +51,8 @@ module DiscourseCodeReview
     def sync_repo(repo_name)
       issue_service.issues(repo_name).each do |issue|
           sync_issue(repo_name, issue.issue_number)
-        end
       end
+    end
     def mirror_issue_post(post)
       topic = post.topic
         user = post.user
