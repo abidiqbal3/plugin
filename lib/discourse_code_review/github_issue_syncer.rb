@@ -10,7 +10,7 @@ module DiscourseCodeReview
       @user_syncer = user_syncer
       end
     def sync_issue(repo_name, issue_number, repo_id: nil)
-        owner, name = repo_name.split('/', 2)
+      owner, name = repo_name.split('/', 2)
         issue =
           Issue.new(
             owner: owner,
@@ -46,10 +46,10 @@ module DiscourseCodeReview
               created_at: event_info.created_at
             )
           poster.post_event(event)
-        end
       end
+    end
     def sync_repo(repo_name)
-        issue_service.issues(repo_name).each do |issue|
+      issue_service.issues(repo_name).each do |issue|
           sync_issue(repo_name, issue.issue_number)
         end
       end
