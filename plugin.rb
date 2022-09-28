@@ -6,13 +6,19 @@
 # authors: Sam Saffron
 # url: https://github.com/discourse/discourse-code-review
 
-gem 'sawyer', '0.8.2'
-gem 'octokit', '4.21.0'
+# gem 'sawyer', '0.9.2'
+# gem 'octokit', '4.21.0'
+# gem 'pqueue', '2.1.0'
+# gem 'rugged', '1.2.0'
+
+gem 'sawyer', '0.9.2'
+gem 'octokit', '5.6.1'
 gem 'pqueue', '2.1.0'
-gem 'rugged', '1.2.0'
+gem 'rugged', '1.3.1'
 
 if Rails.env.test?
-  gem 'graphql', '1.12.12'
+  # gem 'graphql', '1.12.12'
+  gem 'graphql', '2.0.1'
 end
 
 enabled_site_setting :code_review_enabled
