@@ -77,7 +77,7 @@ module DiscourseCodeReview
       # Enumerators::CompactEnumerator.new(
       #   Enumerators::MapEnumerator.new(events) { |event|
       events.lazy.filter_map { |event|
-          event_info =
+        event_info =
             IssueEventInfo.new(
               github_id: event[:id],
               actor:
