@@ -3,15 +3,15 @@
 module DiscourseCodeReview
   class Hooks
     class << self
-        def add_parent_category_finder(key, &blk)
+      def add_parent_category_finder(key, &blk)
           @finders ||= {}
           @finders[key] = blk
         end
-        def remove_parent_category_finder(key)
+      def remove_parent_category_finder(key)
           @finders.delete(key)
           @finders = nil if @finders.length == 0
         end
-        def apply_parent_category_finder(repo_name, repo_id, issues)
+      def apply_parent_category_finder(repo_name, repo_id, issues)
           parent_category_id = nil
           if @finders
             @finders.each do |key, finder|
@@ -21,15 +21,15 @@ module DiscourseCodeReview
           end
           parent_category_id
         end
-        def add_category_namer(key, &blk)
+      def add_category_namer(key, &blk)
           @namers ||= {}
           @namers[key] = blk
         end
-        def remove_category_namer(key)
+      def remove_category_namer(key)
           @namers.delete(key)
           @namers = nil if @namers.length == 0
         end
-        def apply_category_namer(repo_name, repo_id, issues)
+      def apply_category_namer(repo_name, repo_id, issues)
           name = nil
           if @namers
             @namers.each do |key, namer|
