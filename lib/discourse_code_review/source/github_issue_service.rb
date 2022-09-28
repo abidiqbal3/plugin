@@ -36,13 +36,13 @@ module DiscourseCodeReview
       )
   class Source::GithubIssueService
     class EventStream
-        include Enumerable
+      include Enumerable
       def initialize(issue_querier, issue)
-          @issue_querier = issue_querier
-          @issue = issue
+        @issue_querier = issue_querier
+        @issue = issue
         end
       def each(&blk)
-          enumerables = [
+        enumerables = [
             issue_querier.timeline(issue)
           ]
           Enumerators::FlattenMerge
@@ -51,32 +51,32 @@ module DiscourseCodeReview
             }
             .each(&blk)
         end
-        private
-        attr_reader :issue_querier
-        attr_reader :issue
-    end
-    def initialize(client, issue_querier)
-        @client = client
-        @issue_querier = issue_querier
-      end
-    def issues(repo_name)
-        owner, name = repo_name.split('/', 2)
-        issue_querier.issues(owner, name)
-      end
-    def issue_data(issue)
-        issue_querier.issue_data(issue)
-      end
-    def issue_events(issue)
-        EventStream.new(issue_querier, issue)
-      end
-    def create_issue_comment(repo_name, issue_number, body)
-        client.add_comment(repo_name, issue_number, body)
-      end
-    def delete_issue_comment(repo_name, comment_number)
-        client.delete_comment(repo_name, comment_number)
-      end
       private
       attr_reader :issue_querier
-      attr_reader :client
+      attr_reader :issue
+    end
+    def initialize(client, issue_querier)
+      @client = client
+      @issue_querier = issue_querier
+      end
+    def issues(repo_name)
+      owner, name = repo_name.split('/', 2)
+      issue_querier.issues(owner, name)
+      end
+    def issue_data(issue)
+      issue_querier.issue_data(issue)
+      end
+    def issue_events(issue)
+      EventStream.new(issue_querier, issue)
+      end
+    def create_issue_comment(repo_name, issue_number, body)
+      client.add_comment(repo_name, issue_number, body)
+      end
+    def delete_issue_comment(repo_name, comment_number)
+      client.delete_comment(repo_name, comment_number)
+      end
+    private
+    attr_reader :issue_querier
+    attr_reader :client
   end
 end
