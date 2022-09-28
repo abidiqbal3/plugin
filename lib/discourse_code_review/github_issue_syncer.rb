@@ -6,11 +6,10 @@ module DiscourseCodeReview
     GITHUB_ISSUE_NUMBER = "github issue number"
     GITHUB_COMMENT_NUMBER = "github comment number"
     def initialize(issue_service, user_syncer)
-        @issue_service = issue_service
-        @user_syncer = user_syncer
+      @issue_service = issue_service
+      @user_syncer = user_syncer
       end
     def sync_issue(repo_name, issue_number, repo_id: nil)
-        puts "Syncing issue now abbbbbbbbboiiiiiiiiiiidddddddd"
         owner, name = repo_name.split('/', 2)
         issue =
           Issue.new(
@@ -38,7 +37,7 @@ module DiscourseCodeReview
             url: url,
             issue_number: issue_number
           )
-        issue_service.issue_events(issue).each do |event_info, event|
+      issue_service.issue_events(issue).each do |event_info, event|
           poster =
             GithubIssuePoster.new(
               topic: topic,
@@ -55,7 +54,7 @@ module DiscourseCodeReview
         end
       end
     def mirror_issue_post(post)
-        topic = post.topic
+      topic = post.topic
         user = post.user
         conditions = [
           topic.regular?,
@@ -88,14 +87,14 @@ module DiscourseCodeReview
     attr_reader :issue_service
     attr_reader :user_syncer
     def ensure_actor(actor)
-        github_login = actor.github_login
+      github_login = actor.github_login
         user_syncer.ensure_user(
           name: github_login,
           github_login: github_login
         )
       end
     def ensure_issue_topic(category:, author:, github_id:, created_at:, title:, body:, url:, issue_number:)
-        topic_title = "#{title} (Issue ##{issue_number})"
+      topic_title = "#{title} (Issue ##{issue_number})"
         raw = "#{body}\n\n[GitHub](#{url})"
         custom_fields = { GITHUB_ISSUE_NUMBER => issue_number.to_s }
         State::Helpers.ensure_topic_with_nonce(
