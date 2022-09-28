@@ -2,11 +2,9 @@
 
 module DiscourseCodeReview
   class Source::GithubIssueQuerier
-    
     def initialize(graphql_client)
       @graphql_client = graphql_client
     end
-
     def timeline(issue)
       item_types = [
         "CLOSED_EVENT",
@@ -112,9 +110,8 @@ module DiscourseCodeReview
             end
 
           [event_info, event] unless event.nil?
-        }
+      }
     end
-
     def issue_data(issue)
       response =
         graphql_client.execute("
