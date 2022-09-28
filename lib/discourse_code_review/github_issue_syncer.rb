@@ -2,15 +2,14 @@
 
 module DiscourseCodeReview
   class GithubIssueSyncer
-      GITHUB_NODE_ID = "github node id"
-      GITHUB_ISSUE_NUMBER = "github issue number"
-      GITHUB_COMMENT_NUMBER = "github comment number"
-      def initialize(issue_service, user_syncer)
+    GITHUB_NODE_ID = "github node id"
+    GITHUB_ISSUE_NUMBER = "github issue number"
+    GITHUB_COMMENT_NUMBER = "github comment number"
+    def initialize(issue_service, user_syncer)
         @issue_service = issue_service
         @user_syncer = user_syncer
       end
-      puts "In syncer now about to sync               sadadasda  as da d asd "
-      def sync_issue(repo_name, issue_number, repo_id: nil)
+    def sync_issue(repo_name, issue_number, repo_id: nil)
         puts "Syncing issue now abbbbbbbbboiiiiiiiiiiidddddddd"
         owner, name = repo_name.split('/', 2)
         issue =
@@ -50,12 +49,12 @@ module DiscourseCodeReview
           poster.post_event(event)
         end
       end
-      def sync_repo(repo_name)
+    def sync_repo(repo_name)
         issue_service.issues(repo_name).each do |issue|
           sync_issue(repo_name, issue.issue_number)
         end
       end
-      def mirror_issue_post(post)
+    def mirror_issue_post(post)
         topic = post.topic
         user = post.user
         conditions = [
@@ -85,17 +84,17 @@ module DiscourseCodeReview
           end
         end
       end
-      private
-      attr_reader :issue_service
-      attr_reader :user_syncer
-      def ensure_actor(actor)
+    private
+    attr_reader :issue_service
+    attr_reader :user_syncer
+    def ensure_actor(actor)
         github_login = actor.github_login
         user_syncer.ensure_user(
           name: github_login,
           github_login: github_login
         )
       end
-      def ensure_issue_topic(category:, author:, github_id:, created_at:, title:, body:, url:, issue_number:)
+    def ensure_issue_topic(category:, author:, github_id:, created_at:, title:, body:, url:, issue_number:)
         topic_title = "#{title} (Issue ##{issue_number})"
         raw = "#{body}\n\n[GitHub](#{url})"
         custom_fields = { GITHUB_ISSUE_NUMBER => issue_number.to_s }
@@ -112,6 +111,5 @@ module DiscourseCodeReview
           user: author,
         )
       end
-    end
   end
-  
+end
