@@ -50,7 +50,7 @@ module DiscourseCodeReview
     end
     def sync_repo(repo_name)
       issue_service.issues(repo_name).each do |issue|
-          sync_issue(repo_name, issue.issue_number)
+        sync_issue(repo_name, issue.issue_number)
       end
     end
     def mirror_issue_post(post)
