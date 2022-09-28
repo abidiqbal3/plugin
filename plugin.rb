@@ -296,7 +296,7 @@ after_initialize do
 
   on(:post_destroyed) do |post, opts, user|
     category = post&.topic&.category
-    repo_name = 
+    repo_name =
       category && category.custom_fields[DiscourseCodeReview::State::GithubRepoCategories::GITHUB_REPO_NAME]
     return unless category && repo_name.present?
 
