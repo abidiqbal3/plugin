@@ -101,7 +101,6 @@ module DiscourseCodeReview::State::GithubRepoCategories
       return name if name.present?
 
       name = repo_name.split("/", 2).last
-      name += "-issues" if issues
 
       if Category.where(name: name).exists?
         name += SecureRandom.hex
